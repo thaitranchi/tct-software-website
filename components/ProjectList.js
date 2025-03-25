@@ -1,28 +1,17 @@
-import { useState, useEffect } from "react";
-import { db } from "../lib/firebase";
-import { collection, query, onSnapshot } from "firebase/firestore";
+import ProjectCard from "./ProjectCard";
 
-export default function ProjectList() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const q = query(collection(db, "projects"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      let results = [];
-      snapshot.forEach((doc) => {
-        results.push({ id: doc.id, ...doc.data() });
-      });
-      setProjects(results);
-    });
-    return () => unsubscribe();
-  }, []);
-
+function ProjectList({ projects }) {
   return (
-    <div>
-      <h2>Projects</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
       {projects.map((project) => (
-        <p key={project.id}>{project.name}</p>
+        <ProjectCard
+          key={project.id}
+          name={project.name}
+          description={project.description}
+        />
       ))}
     </div>
   );
 }
+
+export default ProjectList;

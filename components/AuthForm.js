@@ -1,49 +1,44 @@
 import { useState } from "react";
-import { auth } from "../lib/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { motion } from "framer-motion";
 
 export default function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(true);
-  const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      if (isLogin) {
-        await signInWithEmailAndPassword(auth, email, password);
-      } else {
-        await createUserWithEmailAndPassword(auth, email, password);
-      }
-      alert("Success!");
-    } catch (err) {
-      setError(err.message);
-    }
+    console.log("Logging in:", email);
   };
 
   return (
-    <div>
-      <h2>{isLogin ? "Login" : "Register"}</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
+    <div className="max-w-md mx-auto mt-10 bg-white p-8 shadow-lg rounded-2xl">
+      <h2 className="text-2xl font-semibold mb-4">Login to TCT Softwares</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <input
+          type="email"
+          placeholder="Email"
+          className="p-3 border rounded-md"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
+        <input
+          type="password"
+          placeholder="Password"
+          className="p-3 border rounded-md"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">{isLogin ? "Login" : "Register"}</button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          type="submit"
+          className="bg-accent text-white p-3 rounded-lg shadow-md"
+        >
+          Login
+        </motion.button>
       </form>
-      <button onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? "Switch to Register" : "Switch to Login"}
-      </button>
     </div>
   );
 }
