@@ -1,10 +1,14 @@
 import AddData from "../components/AddData";
+import withAuth from "../components/withAuth";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
       <AddData />
+      <ProjectList />
     </div>
   );
 }
+
+export default withAuth(Dashboard);
