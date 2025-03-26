@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  @apply bg-gray-50 text-gray-800 antialiased;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* Button Styles */
+button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600;
+}
