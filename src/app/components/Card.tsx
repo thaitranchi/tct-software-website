@@ -10,7 +10,7 @@ interface CardProps {
   imageUrl: string; // Added imageUrl property
 }
 
-export default function Card({ title, description, imageUrl, children }: CardProps) {
+export default function Card({ title, description, imageUrl}: CardProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <Image src={imageUrl} alt={title} width={100} height={100} className="rounded-lg" />

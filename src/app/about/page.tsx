@@ -12,7 +12,7 @@ export default function AboutPage() {
         <p className="text-lg text-gray-700 mb-10">
           At TCT Softwares, we specialize in delivering innovative software solutions
           designed to empower businesses and drive growth. Our expert team is dedicated
-          to creating scalable and future-proof technologies tailored to meet our clients' needs.
+          to creating scalable and future-proof technologies tailored to meet our clients&apos; needs.
         </p>
         <div className="bg-white shadow-md rounded-lg p-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>

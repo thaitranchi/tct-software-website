@@ -11,7 +11,7 @@ export default function ContactPage() {
           Contact Us
         </h1>
         <p className="text-lg text-gray-700 mb-10">
-          We'd love to hear from you! Whether you have questions, feedback, or business
+          We&apos;d love to hear from you! Whether you have questions, feedback, or business
           inquiries, feel free to reach out to us.
         </p>
         <ContactForm />

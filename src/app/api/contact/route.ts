@@ -14,6 +14,6 @@ export async function POST(request: Request) {
     // You can replace this with your actual email or database logic
     return NextResponse.json({ success: true, message: "Message received!" });
   } catch (error) {
-    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
+    return NextResponse.json({ error: error}, { status: 500 });
   }
 }

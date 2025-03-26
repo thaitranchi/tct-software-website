@@ -25,9 +25,10 @@ export default function ContactForm() {
       setStatus("✅ Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      setStatus("⚠️ An error occurred. Please try again.");
+      setStatus(`⚠️ An error occurred. Please try again. Error: ${(error as Error).message}`);
     }
   };
+  
 
   return (
     <form 
