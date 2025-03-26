@@ -13,17 +13,17 @@ export default function Homepage() {
         <Card 
           title="Innovative Solutions" 
           description="Tailored software to streamline your business operations." 
-          imageUrl="/images/solutions.jpg" 
+          // imageUrl="/images/solutions.jpg" 
         />
         <Card 
           title="Expert Team" 
           description="Work with our experienced developers and designers." 
-          imageUrl="/images/team.jpg" 
+          // imageUrl="/images/team.jpg" 
         />
         <Card 
           title="Scalable Infrastructure" 
           description="Build with future-proof technologies and scalability in mind." 
-          imageUrl="/images/infrastructure.jpg" 
+          // imageUrl="/images/infrastructure.jpg" 
         />
       </section>
 
