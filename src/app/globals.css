@@ -1,20 +1,43 @@
+/* app/globals.css */
+
+/* Import Tailwind base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Check for typos or invalid styles */
-.invalid-class {
-  /* Unsupported properties may throw errors */
-  background: $not-a-variable;
-}
-h1, h2, h3, h4 {
-  @apply font-bold text-gray-900;
+/* Custom Global Styles */
+body {
+  @apply bg-gray-50 text-gray-800 antialiased;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
 }
 
+/* Button Customization */
+button {
+  @apply font-medium transition duration-300 ease-in-out;
+}
+
+/* Form Inputs */
+input, textarea {
+  @apply border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-extrabold;
+}
+
+/* Links */
 a {
   @apply text-blue-500 hover:text-blue-600;
+  transition: color 0.2s ease-in-out;
 }
 
-button {
-  @apply px-4 py-2 rounded-lg shadow-lg font-medium;
+/* Custom Utility Classes */
+.custom-shadow {
+  @apply shadow-lg hover:shadow-2xl;
+}
+
+.custom-rounded {
+  @apply rounded-lg;
 }

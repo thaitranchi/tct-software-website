@@ -1,8 +1,9 @@
+import LoadingSpinner from "@/app/components/LoadingSpinner";
+
 export default function Loading() {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <LoadingSpinner />
+    </div>
+  );
+}
