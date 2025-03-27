@@ -1,7 +1,7 @@
 "use client";
 
 import { ButtonHTMLAttributes, FC } from "react";
-import { cn } from "@/lib/utils"; // Utility function for conditional classNames
+import { cn } from "../../lib/utils"; // Utility function for conditional classNames
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "danger";

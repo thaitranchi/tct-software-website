@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   
   // Deployment optimization
   output: "standalone",
+  reactStrictMode: true,
+  swcMinify: true,
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap.xml',
+      },
+    ];
+  },
 
   // Runtime environment variables (optional)
   publicRuntimeConfig: {
