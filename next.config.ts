@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
+    allowedDevOrigins: ["http://localhost:3000"],
   },
   // Enables gzip compression for performance
   compress: true,

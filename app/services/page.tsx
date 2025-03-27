@@ -1,46 +1,49 @@
 "use client";
+import { motion } from "framer-motion";
+import Hero from "@/app/components/Hero";
+import Card from "@/app/components/Card";
 
-import React from "react";
+export default function ServicePage() {
+  const servicesData = [
+    {
+      title: "Web Development",
+      description: "Building modern, responsive websites tailored to your business needs.",
+      imageUrl: "/images/web-development.png",
+    },
+    {
+      title: "Mobile Applications",
+      description: "Innovative mobile solutions for iOS and Android platforms.",
+      imageUrl: "/images/mobile-apps.png",
+    },
+    {
+      title: "Cloud Solutions",
+      description: "Scalable cloud infrastructure to support your growth.",
+      imageUrl: "/images/cloud-solutions.png",
+    },
+  ];
 
-export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-gray-100 p-6">
-      <section className="max-w-4xl mx-auto text-center py-20">
-        <h1 className="text-5xl font-extrabold mb-6 text-green-500 drop-shadow-lg">
-          Our Services
-        </h1>
-        <p className="text-lg text-gray-700 mb-10">
-          At TCT Softwares, we offer a wide range of services designed to meet your business needs.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Custom Software Development</h2>
-            <p className="text-gray-600">
-              Tailored software solutions to streamline business operations and drive growth.
-            </p>
-          </div>
+    <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 p-6">
+      <Hero 
+        title="Our Services" 
+        subtitle="Explore the wide range of services we offer." 
+      />
 
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Web & Mobile Applications</h2>
-            <p className="text-gray-600">
-              Responsive and scalable applications to engage your audience effectively.
-            </p>
-          </div>
-
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Cloud Solutions</h2>
-            <p className="text-gray-600">
-              Seamless cloud integration to enhance security and accessibility.
-            </p>
-          </div>
-
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Maintenance & Support</h2>
-            <p className="text-gray-600">
-              Reliable support to ensure the long-term performance of your software.
-            </p>
-          </div>
-        </div>
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto py-12">
+        {servicesData.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
+            <Card 
+              title={service.title} 
+              description={service.description} 
+              imageUrl={service.imageUrl} 
+            />
+          </motion.div>
+        ))}
       </section>
     </main>
   );
