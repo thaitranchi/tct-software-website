@@ -25,7 +25,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +72,9 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            const isActive = pathname !== null && (
+              pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))
+            );
             return (
             <div 
               key={link.href} 

@@ -5,12 +5,11 @@ const withSerwistConfig = withSerwist({
   // Your PWA configuration
   swDest: "public/sw.js", // Path where the compiled service worker will be output
   swSrc: "app/sw.ts", // Path to your custom service worker source file
-  disable: process.env.NODE_ENV === "development", // Disable PWA in development
+  disable: process.env.NODE_ENV === "production", // Disable PWA in development
 });
 const nextConfig: NextConfig = withSerwistConfig({
-  experimental: {
-    allowedDevOrigins: ["http://localhost:3000"],
-  },
+  turbopack: {},
+
   // Enables gzip compression for performance
   compress: true,
   
@@ -37,13 +36,8 @@ const nextConfig: NextConfig = withSerwistConfig({
     ],
   },
 
-  // Runtime environment variables (optional)
-  publicRuntimeConfig: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-  },
-  serverRuntimeConfig: {
-    SECRET_KEY: process.env.SECRET_KEY,
-  },
+  // Next.js 15 removed publicRuntimeConfig, serverRuntimeConfig, and allowedDevOrigins.
+  // Use environment variables directly (e.g., process.env.NEXT_PUBLIC_API_URL) for runtime configuration.
 });
 
 export default nextConfig; // Export the wrapped config

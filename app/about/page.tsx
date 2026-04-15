@@ -62,7 +62,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="mt-12 pt-10 border-t border-gray-200"
           >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Founder's Open Source Activity</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Founder&apos;s Open Source Activity</h2>
             <div className="flex justify-center items-center overflow-x-auto py-2">
               <GitHubCalendar username="thaitranchi" colorScheme="light" fontSize={14} />
             </div>
