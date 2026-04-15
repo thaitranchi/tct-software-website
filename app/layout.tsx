@@ -1,49 +1,61 @@
-import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ProgressBar from "./components/ProgressBar";
+import type { Metadata, Viewport } from 'next';
+import './globals.css'; // Assuming you have a global CSS file
+import { Inter } from 'next/font/google'; // Example font, replace with your actual font
+import Header from './components/Header'; // Assuming Header is part of the main layout
+import ScrollToTop from './components/ScrollToTop'; // Import the new component
+import ServiceWorkerRegister from './components/ServiceWorkerRegister'; // Import the new component
+import Footer from './components/Footer'; // Import the Footer component
 
-export const metadata = {
-  title: "TCT Softwares | Digital Product & SaaS Engineering Studio",
-  description: "TCT Softwares specializes in building high-performance web applications, scalable SaaS architectures, and innovative digital products. Partner with us for engineering excellence.",
+const inter = Inter({ subsets: ['latin'] }); // Example font
+
+export const viewport: Viewport = {
+  themeColor: '#2563eb',
+};
+
+export const metadata: Metadata = {
+  title: 'TCT Softwares',
+  description: 'Professional software development services.',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
-    title: "TCT Softwares - Engineering Your Digital Future",
-    description: "From concept to deployment, we build secure, scalable, and high-performing digital foundations for modern enterprises.",
-    url: "https://tctsoftwares.com",
+    title: 'TCT Softwares',
+    description: 'Professional software development services.',
+    url: 'https://tctsoftwares.com', // Replace with your actual production domain
+    siteName: 'TCT Softwares',
     images: [
       {
-        url: "/og-image.png",
+        url: 'https://tctsoftwares.com/og-image.png', // Replace with your actual OG image path
         width: 1200,
         height: 630,
-        alt: "Thai Tran Chi - Software Engineer",
+        alt: 'TCT Softwares - Professional Software Development',
       },
     ],
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "TCT Softwares - Digital Product Studio",
-    description: "Turning complex business requirements into elegant technical reality.",
-    images: ["/og-image.png"],
-  },
-  icons: {
-    icon: "/favicon.ico", // Favicon
-    shortcut: "/favicon-32x32.png", // Browser tab icon
-    apple: "/apple-touch-icon.png", // iOS home screen icon
+    card: 'summary_large_image',
+    title: 'TCT Softwares',
+    description: 'Professional software development services.',
+    images: ['https://tctsoftwares.com/og-image.png'], // Replace with your actual image path
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
-      <body className="flex flex-col min-h-screen bg-gray-50">
-        <ProgressBar />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <body className={inter.className}>
+        <Header /> {/* Render your Header component */}
+        {children}
+        <Footer /> {/* Add the Footer component here */}
+            <ServiceWorkerRegister /> {/* Add the service worker registration component */}
+        <ScrollToTop /> {/* Render the ScrollToTop component */}
       </body>
     </html>
   );

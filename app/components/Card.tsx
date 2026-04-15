@@ -1,8 +1,11 @@
 // components/Card.tsx
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Button from "@/app/components/Button";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 interface CardProps {
   title: string;
@@ -18,7 +21,11 @@ export default function Card({ title, description, imageUrl }: CardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <motion.div 
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow cursor-default"
+    >
       {/* Hero Section */}
       <div className="relative w-full h-40">
         <Image 
@@ -36,6 +43,6 @@ export default function Card({ title, description, imageUrl }: CardProps) {
       <Button variant="primary" className="mt-4" onClick={handleLearnMore}>
         Learn More
       </Button>
-    </div>
+    </motion.div>
   );
 }

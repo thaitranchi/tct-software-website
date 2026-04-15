@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
+import withSerwist from "@serwist/next";
 
-const nextConfig: NextConfig = {
+const withSerwistConfig = withSerwist({
+  // Your PWA configuration
+  swDest: "public/sw.js", // Path where the compiled service worker will be output
+  swSrc: "app/sw.ts", // Path to your custom service worker source file
+  disable: process.env.NODE_ENV === "development", // Disable PWA in development
+});
+const nextConfig: NextConfig = withSerwistConfig({
   experimental: {
     allowedDevOrigins: ["http://localhost:3000"],
   },
@@ -10,7 +17,6 @@ const nextConfig: NextConfig = {
   // Deployment optimization
   output: "standalone",
   reactStrictMode: true,
-  swcMinify: true,
   async rewrites() {
     return [
       {
@@ -38,6 +44,6 @@ const nextConfig: NextConfig = {
   serverRuntimeConfig: {
     SECRET_KEY: process.env.SECRET_KEY,
   },
-};
+});
 
-export default nextConfig;
+export default nextConfig; // Export the wrapped config
