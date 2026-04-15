@@ -19,6 +19,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/**',
+      },
+      // If your PROJECTS_DATA contains images from other domains, 
+      // you should add them here as well.
+    ],
+  },
 
   // Runtime environment variables (optional)
   publicRuntimeConfig: {

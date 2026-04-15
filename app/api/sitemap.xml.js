@@ -51,5 +51,5 @@ export async function GET() {
 // Example function to simulate fetching dynamic routes
 async function getDynamicRoutes() {
   // Simulate fetching from database or API
-  return ["projects/project-1", "projects/project-2", "blog/post-1"];
+  return ["blog/post-1"];
 }

@@ -6,24 +6,27 @@ import Card from "@/app/components/Card";
 export default function ServicePage() {
   const servicesData = [
     {
-      title: "Web Development",
-      description: "Building modern, responsive websites tailored to your business needs.",
+      title: "Modern Frontend Systems",
+      id: "frontend",
+      description: "Building ultra-fast, SEO-optimized interfaces using Next.js 15, Server Components, and sophisticated design systems.",
       imageUrl: "/images/web-development.png",
     },
     {
-      title: "Mobile Applications",
-      description: "Innovative mobile solutions for iOS and Android platforms.",
+      title: "Serverless Architecture",
+      id: "serverless",
+      description: "Architecting secure, auto-scaling backends using Firebase, AWS Lambda, and Edge Functions for global reach.",
       imageUrl: "/images/mobile-apps.png",
     },
     {
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure to support your growth.",
+      title: "Technical SEO & Vitals",
+      id: "seo",
+      description: "Optimizing Core Web Vitals and structured data to ensure your SaaS product dominates search rankings.",
       imageUrl: "/images/cloud-solutions.png",
     },
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
       <Hero 
         title="Our Services" 
         subtitle="Explore the wide range of services we offer." 
@@ -33,9 +36,11 @@ export default function ServicePage() {
         {servicesData.map((service, index) => (
           <motion.div
             key={index}
+            id={service.id}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
           >
             <Card 
               title={service.title} 
@@ -45,6 +50,6 @@ export default function ServicePage() {
           </motion.div>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

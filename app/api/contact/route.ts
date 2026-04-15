@@ -14,6 +14,7 @@ export async function POST(request: Request) {
     // You can replace this with your actual email or database logic
     return NextResponse.json({ success: true, message: "Message received!" });
   } catch (error) {
-    return NextResponse.json({ error: error}, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

@@ -27,7 +27,6 @@ export default function Card({ title, description, imageUrl }: CardProps) {
           fill 
           className="object-cover rounded-lg" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority 
         />
       </div>
       <h3 className="mt-4 text-xl font-semibold">{title}</h3>

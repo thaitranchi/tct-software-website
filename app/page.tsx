@@ -1,104 +1,120 @@
 "use client";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { motionVariants } from "@/app/components/motionVariants";
-import Card from "@/app/components/Card";
 import Hero from "@/app/components/Hero";
+import Card from "@/app/components/Card";
+import Button from "@/app/components/Button";
+import { PROJECTS_DATA } from "@/lib/constants";
 
-export default function Homepage() {
-  const cardData = [
-    {
-      title: "Innovative Solutions",
-      description: "Tailored software to streamline your business operations.",
-      imageUrl: "/images/solutions.png",
-    },
-    {
-      title: "Expert Team",
-      description: "Work with our experienced developers and designers.",
-      imageUrl: "/images/team.png",
-    },
-    {
-      title: "Scalable Infrastructure",
-      description: "Build with future-proof technologies and scalability in mind.",
-      imageUrl: "/images/infrastructure.png",
-    },
-  ];
-
-  const transition = { duration: 0.5 };
-
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-white">
       <Hero 
-        title="Welcome to TCT Softwares" 
-        subtitle="Innovative solutions for your business needs." 
+        title="TCT Softwares" 
+        subtitle="Engineering scalable digital products for the next generation of SaaS founders." 
       />
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto py-12">
-        {cardData.map((card, index) => (
+      {/* Core Expertise Section */}
+      <section className="max-w-6xl mx-auto py-20 px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Core Expertise</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">We don't just build apps; we architect ecosystems designed for growth, security, and performance.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { title: "Enterprise Grade", desc: "Type-safe codebases using TypeScript and Next.js for maximum reliability." },
+            { title: "Real-time Scale", desc: "Distributed architectures leveraging Firebase and edge computing." },
+            { title: "Product Mindset", desc: "Strategic development focused on user retention and business goals." },
+          ].map((item, i) => (
+            <div key={i} className="border-l-4 border-blue-500 pl-6">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p className="text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="max-w-6xl mx-auto py-12 px-6 bg-gray-50 rounded-3xl mb-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Featured Engineering</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PROJECTS_DATA.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <Card 
+                title={project.title} 
+                description={project.description} 
+                imageUrl={project.imageUrl} 
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Founder Section */}
+      <section className="relative max-w-6xl mx-auto py-24 px-6 border-t border-gray-100 overflow-hidden">
+        {/* Geometric Background Decorative Elements */}
+        <div className="absolute top-0 right-0 -z-10 pointer-events-none opacity-[0.04] text-blue-600 translate-x-1/4 -translate-y-1/4">
+          <svg width="600" height="600" fill="none" viewBox="0 0 600 600">
+            <defs>
+              <pattern id="geo-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+                <path d="M 40 0 L 0 0 0 40" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
+              </pattern>
+            </defs>
+            <rect width="600" height="600" fill="url(#geo-pattern)" />
+          </svg>
+        </div>
+        
+        {/* Subtle radial glow to anchor the visual profile */}
+        <div className="absolute -left-24 bottom-0 -z-10 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col md:flex-row items-center gap-16">
           <motion.div
-            key={index}
-            variants={motionVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            transition={{ ...transition, delay: index * 0.2 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full md:w-1/3"
           >
-            <Card 
-              title={card.title} 
-              description={card.description} 
-              imageUrl={card.imageUrl} 
-            />
+            <div className="aspect-square bg-gray-100 rounded-3xl overflow-hidden relative border-4 border-white shadow-2xl">
+              <Image
+                src="https://github.com/thaitranchi.png"
+                alt="Thai Tran Chi - Founder of TCT Softwares"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
+            </div>
           </motion.div>
-        ))}
-      </section>
 
-      <section className="max-w-6xl mx-auto py-12 text-center">
-        <h2 className="text-4xl font-bold mb-4">Why Choose Us</h2>
-        <p className="text-gray-600 mb-8">We provide top-notch solutions tailored to your business growth.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {["Reliability", "Expertise", "Customer Support"].map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...transition, delay: index * 0.2 }}
-              className="bg-white shadow-md rounded-lg p-6"
-            >
-              <h3 className="text-2xl font-semibold mb-2">{item}</h3>
-              <p className="text-gray-600">Experience unmatched service and dedicated support.</p>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full md:w-2/3"
+          >
+            <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">The Face Behind the Code</h2>
+            <h3 className="text-4xl font-bold text-gray-900 mb-6">Built by a Founder, for Founders.</h3>
+            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              I’m Thai Tran Chi, the lead engineer and founder of TCT Softwares. I believe that great software isn't just about code—it's about understanding the business vision and translating it into a scalable, high-performance reality.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/about" className="inline-block bg-gray-900 text-white px-8 py-3 rounded-xl font-semibold hover:bg-black transition-all">
+                Read My Story
+              </Link>
+              <a href="https://founder.tctsoftwares.com" target="_blank" rel="noopener noreferrer" className="inline-block border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all">
+                Founder Portfolio
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
-
-      <section className="max-w-6xl mx-auto py-12">
-        <h2 className="text-4xl font-bold text-center mb-6">Testimonials</h2>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          className="bg-white shadow-md rounded-lg p-8"
-        >
-          <p className="text-lg italic mb-4">&quot;TCT Softwares transformed our business operations with their innovative solutions.&quot;</p>
-          <p className="text-right font-semibold">- Happy Client</p>
-        </motion.div>
-      </section>
-
-      <section className="max-w-6xl mx-auto py-12">
-        <h2 className="text-4xl font-bold text-center mb-6">Our Partners</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["Partner A", "Partner B", "Partner C", "Partner D"].map((partner, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ ...transition, delay: index * 0.2 }}
-              className="bg-white shadow-md rounded-lg p-4 flex items-center justify-center"
-            >
-              <p className="text-xl font-semibold">{partner}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }

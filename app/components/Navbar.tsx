@@ -26,9 +26,12 @@ export default function Navbar() {
         </div>
 
         {/* Navigation Links */}
-        <ul className={`flex items-center space-x-4 ${isOpen ? 'flex' : 'hidden'} md:flex transition-all duration-300 ease-in-out`}>
+        <ul className={`flex items-center space-x-4 ${isOpen ? 'flex' : 'hidden'} md:flex transition-all duration-300 ease-in-out font-medium`}>
           <li className="hover:bg-gray-800 p-2 rounded-md">
             <Link href="/" aria-label="Home">Home</Link>
+          </li>
+          <li className="hover:bg-gray-800 p-2 rounded-md">
+            <Link href="/projects" aria-label="Projects">Projects</Link>
           </li>
           <li className="hover:bg-gray-800 p-2 rounded-md">
             <Link href="/about" aria-label="About">About</Link>
@@ -38,6 +41,9 @@ export default function Navbar() {
           </li>
           <li className="hover:bg-gray-800 p-2 rounded-md">
             <Link href="/contact" aria-label="Contact">Contact</Link>
+          </li>
+          <li className="hover:bg-gray-800 p-2 rounded-md">
+            <a href="https://founder.tctsoftwares.com" target="_blank" rel="noopener noreferrer" aria-label="Founder">Founder</a>
           </li>
         </ul>
 
