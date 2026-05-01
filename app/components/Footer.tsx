@@ -10,7 +10,7 @@ export default function Footer() {
           <SocialLink href="https://github.com/TCT-Softwares" label="GitHub Org" />
           <SocialLink href="https://www.linkedin.com/company/tctsoftwares" label="LinkedIn" />
           <SocialLink href="https://www.facebook.com/tctsoftwares" label="Facebook" />
-          <SocialLink href="https://founder.tctsoftwares.com" label="Founder" />
+          <SocialLink href="https://thaitranchi-portfolio.vercel.app/" label="Founder" />
         </div>
         <p>&copy; {new Date().getFullYear()} TCT Softwares. All rights reserved.</p>
       </div>
